@@ -1,6 +1,6 @@
-# Claude Code Snapshot
+# AnyCode
 
-A community-led reconstruction of a Claude Code-style terminal coding agent.
+AnyCode is a community-led terminal coding agent reconstruction project.
 
 This project is rebuilding a large TypeScript CLI into a usable open development project with:
 

@@ -96,7 +96,7 @@ function DirectoryInput(t0) {
   }
   let t2;
   if ($[1] !== onChange || $[2] !== onSubmit || $[3] !== value) {
-    t2 = <Box borderDimColor={true} borderStyle="round" marginY={1} paddingLeft={1}><TextInput showCursor={true} placeholder={`Directory path${figures.ellipsis}`} value={value} onChange={onChange} onSubmit={onSubmit} columns={80} cursorOffset={value.length} onChangeCursorOffset={_temp} /></Box>;
+    t2 = <Box borderDimColor={true} borderStyle="round" marginY={1} paddingLeft={1}><TextInput showCursor={true} placeholder={`Directory path${figures.ellipsis}`} value={value} onChange={onChange} onSubmit={onSubmit} columns={80} cursorOffset={value.length} onChangeCursorOffset={_temp} disableEscapeDoublePress /></Box>;
     $[1] = onChange;
     $[2] = onSubmit;
     $[3] = value;

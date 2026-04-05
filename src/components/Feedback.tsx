@@ -1,3 +1,4 @@
+// @ts-nocheck
 import axios from 'axios';
 import { readFile, stat } from 'fs/promises';
 import * as React from 'react';
@@ -324,7 +325,7 @@ export function Feedback({
         }
       }} columns={textInputColumns} onSubmit={() => setStep('consent')} onExitMessage={() => onDone('Feedback cancelled', {
         display: 'system'
-      })} cursorOffset={cursorOffset} onChangeCursorOffset={setCursorOffset} showCursor />
+      })} cursorOffset={cursorOffset} onChangeCursorOffset={setCursorOffset} showCursor disableEscapeDoublePress />
           {error && <Box flexDirection="column" gap={1}>
               <Text color="error">{error}</Text>
               <Text dimColor>

@@ -289,7 +289,7 @@ export function PreviewQuestionView({
                 onUpdateQuestionState(questionText, {
                   textInputValue: value
                 }, false);
-              }} onSubmit={handleNotesExit} onExit={handleNotesExit} focus={true} showCursor={true} columns={60} cursorOffset={cursorOffset} onChangeCursorOffset={setCursorOffset} /> : <Text dimColor italic>
+              }} onSubmit={handleNotesExit} onExit={handleNotesExit} focus={true} showCursor={true} columns={60} cursorOffset={cursorOffset} onChangeCursorOffset={setCursorOffset} disableEscapeDoublePress /> : <Text dimColor italic>
                     {notesValue || 'press n to add notes'}
                   </Text>}
               </Box>

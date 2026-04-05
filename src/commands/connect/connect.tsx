@@ -7,6 +7,7 @@ import { Select } from '../../components/CustomSelect/index.js'
 import { FuzzyPicker } from '../../components/design-system/FuzzyPicker.js'
 import { Pane } from '../../components/design-system/Pane.js'
 import { Box, Text } from '../../ink.js'
+import { useKeybinding } from '../../keybindings/useKeybinding.js'
 import {
   getModelsDevDataset,
   refreshModelsDevCache,
@@ -197,6 +198,10 @@ function FieldStep({
 }): React.ReactNode {
   const [cursorOffset, setCursorOffset] = useState(value.length)
 
+  useKeybinding('confirm:no', onExit, {
+    context: 'Settings',
+  })
+
   useEffect(() => {
     setCursorOffset(value.length)
   }, [value])
@@ -215,6 +220,7 @@ function FieldStep({
           focus
           showCursor
           mask={mask}
+          disableEscapeDoublePress
           columns={80}
           cursorOffset={cursorOffset}
           onChangeCursorOffset={setCursorOffset}

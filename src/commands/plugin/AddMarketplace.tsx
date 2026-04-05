@@ -7,6 +7,7 @@ import { KeyboardShortcutHint } from '../../components/design-system/KeyboardSho
 import { Spinner } from '../../components/Spinner.js';
 import TextInput from '../../components/TextInput.js';
 import { Box, Text } from '../../ink.js';
+import { useKeybinding } from '../../keybindings/useKeybinding.js';
 import { toError } from '../../utils/errors.js';
 import { logError } from '../../utils/log.js';
 import { clearAllCaches } from '../../utils/plugins/cacheUtils.js';
@@ -42,6 +43,22 @@ export function AddMarketplace({
   const hasAttemptedAutoAdd = useRef(false);
   const [isLoading, setLoading] = useState(false);
   const [progressMessage, setProgressMessage] = useState<string>('');
+  const handleCancel = () => {
+    setError(null);
+    setResult(null);
+    setProgressMessage('');
+    setLoading(false);
+    if (cliMode) {
+      setResult('Cancelled adding marketplace');
+      return;
+    }
+    setViewState({
+      type: 'menu'
+    });
+  };
+  useKeybinding('confirm:no', handleCancel, {
+    context: 'Settings'
+  });
   const handleAdd = async () => {
     const input = inputValue.trim();
     if (!input) {
@@ -133,7 +150,7 @@ export function AddMarketplace({
           <Text dimColor> · https://example.com/marketplace.json</Text>
           <Text dimColor> · ./path/to/marketplace</Text>
           <Box marginTop={1}>
-            <TextInput value={inputValue} onChange={setInputValue} onSubmit={handleAdd} columns={80} cursorOffset={cursorOffset} onChangeCursorOffset={setCursorOffset} focus showCursor />
+            <TextInput value={inputValue} onChange={setInputValue} onSubmit={handleAdd} columns={80} cursorOffset={cursorOffset} onChangeCursorOffset={setCursorOffset} focus showCursor disableEscapeDoublePress />
           </Box>
         </Box>
         {isLoading && <Box marginTop={1}>

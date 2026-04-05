@@ -379,7 +379,7 @@ export function SelectInputOption(t0) {
           isUserEditing.current = true;
           onInputChange(value);
           option.onChange(value);
-        }} onSubmit={onSubmit} onExit={onExit} placeholder={option.placeholder} focus={!imagesSelected} showCursor={true} multiline={true} cursorOffset={cursorOffset} onChangeCursorOffset={setCursorOffset} columns={80} onImagePaste={onImagePaste} onPaste={pastedText => {
+        }} onSubmit={onSubmit} onExit={onExit} placeholder={option.placeholder} focus={!imagesSelected} showCursor={true} multiline={true} cursorOffset={cursorOffset} onChangeCursorOffset={setCursorOffset} columns={80} disableEscapeDoublePress onImagePaste={onImagePaste} onPaste={pastedText => {
           isUserEditing.current = true;
           const before = inputValue.slice(0, cursorOffset);
           const after = inputValue.slice(cursorOffset);
@@ -391,7 +391,7 @@ export function SelectInputOption(t0) {
       isUserEditing.current = true;
       onInputChange(value_0);
       option.onChange(value_0);
-    }} onSubmit={onSubmit} onExit={onExit} placeholder={option.placeholder || (typeof option.label === "string" ? option.label : undefined)} focus={!imagesSelected} showCursor={true} multiline={true} cursorOffset={cursorOffset} onChangeCursorOffset={setCursorOffset} columns={80} onImagePaste={onImagePaste} onPaste={pastedText_0 => {
+    }} onSubmit={onSubmit} onExit={onExit} placeholder={option.placeholder || (typeof option.label === "string" ? option.label : undefined)} focus={!imagesSelected} showCursor={true} multiline={true} cursorOffset={cursorOffset} onChangeCursorOffset={setCursorOffset} columns={80} disableEscapeDoublePress onImagePaste={onImagePaste} onPaste={pastedText_0 => {
       isUserEditing.current = true;
       const before_0 = inputValue.slice(0, cursorOffset);
       const after_0 = inputValue.slice(cursorOffset);

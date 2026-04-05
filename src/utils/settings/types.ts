@@ -36,6 +36,28 @@ export const EnvironmentVariablesSchema = lazySchema(() =>
   z.record(z.string(), z.coerce.string()),
 )
 
+export const ProviderSettingsSchema = lazySchema(() =>
+  z
+    .object({
+      enabled: z.boolean().optional(),
+      apiKey: z.string().optional(),
+      apiKeyHelper: z.string().optional(),
+      baseURL: z.string().optional(),
+      defaultModel: z.string().optional(),
+    })
+    .strict(),
+)
+
+export const ModelRegistrySettingsSchema = lazySchema(() =>
+  z
+    .object({
+      source: z.enum(['models.dev']).optional(),
+      cacheTTLMinutes: z.number().int().positive().optional(),
+      refreshOnStartup: z.boolean().optional(),
+    })
+    .strict(),
+)
+
 /**
  * Schema for permissions section
  */
@@ -376,6 +398,13 @@ export const SettingsSchema = lazySchema(() =>
         .string()
         .optional()
         .describe('Override the default model used by Claude Code'),
+      providers: z
+        .record(z.string(), ProviderSettingsSchema())
+        .optional()
+        .describe('Provider-specific connection and default model settings'),
+      modelRegistry: ModelRegistrySettingsSchema()
+        .optional()
+        .describe('Model directory configuration for models.dev'),
       // Enterprise allowlist of models
       availableModels: z
         .array(z.string())

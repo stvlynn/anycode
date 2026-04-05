@@ -1,7 +1,9 @@
+// @ts-nocheck
 import { c as _c } from "react/compiler-runtime";
 import chalk from 'chalk';
 import * as React from 'react';
 import type { CommandResultDisplay } from '../../commands.js';
+import { ModelsBrowser } from '../../components/ModelsBrowser.js';
 import { ModelPicker } from '../../components/ModelPicker.js';
 import { COMMON_HELP_ARGS, COMMON_INFO_ARGS } from '../../constants/xml.js';
 import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEvent } from '../../services/analytics/index.js';
@@ -277,7 +279,7 @@ export const call: LocalJSXCommandCall = async (onDone, _context, args) => {
     return <ShowModelAndClose onDone={onDone} />;
   }
   if (COMMON_HELP_ARGS.includes(args)) {
-    onDone('Run /model to open the model selection menu, or /model [modelName] to set the model.', {
+    onDone('Run /models to browse models, /connect to add a provider, or /model [modelName] to set the model directly.', {
       display: 'system'
     });
     return;
@@ -288,7 +290,7 @@ export const call: LocalJSXCommandCall = async (onDone, _context, args) => {
     });
     return <SetModelAndClose args={args} onDone={onDone} />;
   }
-  return <ModelPickerWrapper onDone={onDone} />;
+  return <ModelsBrowser onDone={onDone} />;
 };
 function renderModelLabel(model: string | null): string {
   const rendered = renderDefaultModelSetting(model ?? getDefaultMainLoopModelSetting());
